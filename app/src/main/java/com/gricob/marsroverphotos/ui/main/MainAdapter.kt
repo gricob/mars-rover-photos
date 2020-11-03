@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.photos_item_list.view.*
 
 class MainAdapter(
     private val context: Context,
-    private val callbackItemClick: CallbackItemClick,
+    private val callbackItemClick: CallbackItemClick?,
     private val items: List<PhotosItem>
     ) : RecyclerView.Adapter<MainAdapter.MainHolder>() {
 
@@ -38,7 +38,7 @@ class MainAdapter(
                 .into(holder.view.cardViewImage)
 
             holder.view.cardView.setOnClickListener {
-                callbackItemClick.onItemClick(item)
+                callbackItemClick?.onItemClick(item)
             }
 
             holder.view.cardViewTitle.text = item.camera?.let {

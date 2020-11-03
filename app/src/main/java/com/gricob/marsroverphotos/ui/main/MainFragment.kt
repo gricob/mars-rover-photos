@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class MainFragment : Fragment(), CallbackItemClick {
+class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() =  MainFragment()
@@ -52,13 +52,9 @@ class MainFragment : Fragment(), CallbackItemClick {
 
     private fun getAllPhotos() {
         mainViewModel.getAllPhotos().observe(viewLifecycleOwner, Observer { photosList ->
-            mainAdapter = MainAdapter(requireActivity().applicationContext, this, photosList)
+            mainAdapter = MainAdapter(requireActivity().applicationContext, null, photosList)
 
             recyclerViewMainList.adapter = mainAdapter
         })
-    }
-
-    override fun onItemClick(photosItem: PhotosItem) {
-        TODO("Not yet implemented")
     }
 }
